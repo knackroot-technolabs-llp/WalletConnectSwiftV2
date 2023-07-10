@@ -3,6 +3,7 @@ import XCTest
 import Combine
 @testable import Web3Wallet
 @testable import Auth
+@testable import WalletConnectSign
 @testable import WalletConnectEcho
 
 final class XPlatformW3WTests: XCTestCase {
@@ -23,7 +24,9 @@ final class XPlatformW3WTests: XCTestCase {
         let relayLogger = ConsoleLogger(suffix: "🚄" + " [Relay]", loggingLevel: .debug)
         let pairingLogger = ConsoleLogger(suffix: "👩‍❤️‍💋‍👩" + " [Pairing]", loggingLevel: .debug)
         let networkingLogger = ConsoleLogger(suffix: "🕸️" + " [Networking]", loggingLevel: .debug)
-        let authLogger = ConsoleLogger(suffix: "✍🏿", loggingLevel: .debug)
+        let authLogger = ConsoleLogger(suffix: "🪪", loggingLevel: .debug)
+
+        let signLogger = ConsoleLogger(suffix: "✍🏿", loggingLevel: .debug)
 
         let relayClient = RelayClientFactory.create(
             relayHost: InputConfig.relayHost,
@@ -47,9 +50,13 @@ final class XPlatformW3WTests: XCTestCase {
             networkingClient: networkingClient)
 
         let signClient = SignClientFactory.create(
-            metadata: AppMetadata.stub(),
+            metadata: AppMetadata(name: name, description: "", url: "", icons: [""]),
+            logger: signLogger,
+            keyValueStorage: keyValueStorage,
+            keychainStorage: keychain,
             pairingClient: pairingClient,
-            networkingClient: networkingClient)
+            networkingClient: networkingClient
+        )
 
         let authClient = AuthClientFactory.create(
             metadata: AppMetadata(name: name, description: "", url: "", icons: [""]),
@@ -102,9 +109,9 @@ class JavaScriptAutoTestsAPI {
     }
 
     func quickConnect() async throws -> WalletConnectURI {
-        let url = URL(string: "https://test-automation-api.walletconnect.com/quick_connect")
-        let uriString = try await httpClient.request(String.self, at: endpoint)
-        httpClient.
+        let url = URL(string: "https://test-automation-api.walletconnect.com/quick_connect")!
+        let (data, _) = try await URLSession.shared.data(from: url)
+        let uriString = String(decoding: data, as: UTF8.self)
         return WalletConnectURI(string: uriString)!
     }
 }
