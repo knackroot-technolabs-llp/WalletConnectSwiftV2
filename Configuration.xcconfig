@@ -1,9 +1,9 @@
 RELAY_HOST = relay.walletconnect.com
 
 // Uncomment next line and paste your project id. Get this on: https://cloud.walletconnect.com/sign-in
-// PROJECT_ID = YOUR_PROJECT_ID
+PROJECT_ID = 9bfe94c9cbf74aaa0597094ef561f703
 
 // Uncomment next line and paste dapp id to run all the notify tests
-// GM_DAPP_PROJECT_ID = GM_DAPP_PROJECT_ID
+GM_DAPP_PROJECT_ID = b5dba79e421fd90af68d0a1006caf864
 
 CAST_HOST = cast.walletconnect.com

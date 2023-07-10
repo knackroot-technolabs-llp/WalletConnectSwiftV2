@@ -12,6 +12,8 @@ final class XPlatformW3WTests: XCTestCase {
 
     override func setUp() {
         makeClient()
+        let httpClient = HTTPNetworkClient(host: "test-automation-api.walletconnect.com")
+        javaScriptAutoTestsAPI = JavaScriptAutoTestsAPI(httpClient: httpClient)
     }
 
     func makeClient() {
@@ -100,8 +102,10 @@ class JavaScriptAutoTestsAPI {
     }
 
     func quickConnect() async throws -> WalletConnectURI {
-        let endpoint = Endpoint(path: "/quick_connect", method: .get)
-        return try await httpClient.request(WalletConnectURI.self, at: endpoint)
+        let url = URL(string: "https://test-automation-api.walletconnect.com/quick_connect")
+        let uriString = try await httpClient.request(String.self, at: endpoint)
+        httpClient.
+        return WalletConnectURI(string: uriString)!
     }
 }
 
