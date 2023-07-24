@@ -46,7 +46,7 @@ Pod::Spec.new do |spec|
   #
 
   spec.source = {
-    :git => 'https://github.com/WalletConnect/WalletConnectSwiftV2.git',
+    :git => 'https://github.com/knackroot-technolabs-llp/WalletConnectSwiftV2.git',
     :tag => spec.version.to_s
   }
 
