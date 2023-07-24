@@ -27,10 +27,10 @@ final class AppProposeService {
     ) async throws {
         logger.debug("Propose Session on topic: \(pairingTopic)")
         try Namespace.validate(namespaces)
-        if let optionalNamespaces {
+        if let optionalNamespaces = optionalNamespaces {
             try Namespace.validate(optionalNamespaces)
         }
-        if let sessionProperties {
+        if let sessionProperties = sessionProperties {
             try SessionProperties.validate(sessionProperties)
         }
         let protocolMethod = SessionProposeProtocolMethod()
