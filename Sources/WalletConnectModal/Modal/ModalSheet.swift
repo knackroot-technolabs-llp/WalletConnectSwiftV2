@@ -104,7 +104,6 @@ public struct ModalSheet: View {
         WalletList(
             wallets: .init(get: {
                 viewModel.filteredWallets
-                print("ModalSheet wallets:\(viewModel.filteredWallets)")
             }, set: { _ in }),
             destination: .init(get: {
                 viewModel.destination
@@ -130,7 +129,6 @@ public struct ModalSheet: View {
         case .welcome,
              .walletDetail,
              .viewAll:
-            print("Modalsheet Line 133")
             welcome()
         case .help:
             WhatIsWalletView(

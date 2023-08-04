@@ -54,8 +54,7 @@ struct WalletList: View {
                 HStack {
                     ForEach(numberOfColumns..<(2 * numberOfColumns - 1)) { index in
                         gridItem(for: index)
-                    }
-                    print("WalletList, Wallet:\(wallets)")    
+                    }   
                     if wallets.count > numberOfColumns * 2 {
                         viewAllItem()
                             .transform {
