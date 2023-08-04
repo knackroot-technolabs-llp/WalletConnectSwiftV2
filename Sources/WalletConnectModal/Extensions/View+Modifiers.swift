@@ -14,7 +14,7 @@ extension View {
         }
     }
     
-    func transform(@ViewBuilder _ transform: (Self) -> some View) -> some View {
+    func transform<Content: View>(_ transform: (Self) -> Content) -> some View {
         transform(self)
     }
 }
