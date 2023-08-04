@@ -27,11 +27,13 @@ final class DefaultModalSheetInteractor: ModalSheetInteractor {
                 excludedIds: WalletConnectModal.config.excludedWalletIds
             )
         )
+        print("ModalInteractor, Response:\(response)")
     
         return response.listings.values.compactMap { $0 }
     }
     
     func createPairingAndConnect() async throws -> WalletConnectURI? {
+        print("from createPairingAndConnect")
         try await WalletConnectModal.instance.connect(topic: nil)
     }
 }

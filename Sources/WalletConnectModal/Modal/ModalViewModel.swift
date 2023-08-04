@@ -56,7 +56,7 @@ final class ModalViewModel: ObservableObject {
     
     var filteredWallets: [Listing] {
         if searchTerm.isEmpty { return wallets }
-        
+        print("ModalviewModal List of wallets:\(wallets)")
         return wallets.filter { $0.name.lowercased().contains(searchTerm.lowercased()) }
     }
     
@@ -75,7 +75,7 @@ final class ModalViewModel: ObservableObject {
         interactor.sessionSettlePublisher
             .receive(on: DispatchQueue.main)
             .sink { sessions in
-                print(sessions)
+                print("ModalViewModal, session:\(sessions)")
                 isShown.wrappedValue = false
                 self.toast = Toast(style: .success, message: "Session estabilished", duration: 15)
             }
@@ -85,7 +85,7 @@ final class ModalViewModel: ObservableObject {
             .receive(on: DispatchQueue.main)
             .sink { (proposal, reason) in
                 
-                print(reason)
+                print("ModalViewModal, session:\(reason)")
                 self.toast = Toast(style: .error, message: reason.message)
                 
                 Task {
@@ -104,6 +104,7 @@ final class ModalViewModel: ObservableObject {
             }
             uri = wcUri.absoluteString
             deeplinkUri = wcUri.deeplinkUri
+            print("ModalViewModal WcUri, deeplinkuri:\(deeplinkUri) uri:\(uri)")
         } catch {
             print(error)
             toast = Toast(style: .error, message: error.localizedDescription)
@@ -111,6 +112,7 @@ final class ModalViewModel: ObservableObject {
     }
         
     func navigateTo(_ destination: Destination) {
+        print("ModalviewModal destination:\(destination)")
         guard self.destination != destination else { return }
         destinationStack.append(destination)
     }
@@ -177,7 +179,7 @@ final class ModalViewModel: ObservableObject {
             let wallets = try await interactor.getListings()
             // Small deliberate delay to ensure animations execute properly
             try await Task.sleep(nanoseconds: 500_000_000)
-                
+            print("ModalviewModal, fetched wallets:\(wallets)")     
             withAnimation {
                 self.wallets = wallets.sorted {
                     guard let lhs = $0.order else {
