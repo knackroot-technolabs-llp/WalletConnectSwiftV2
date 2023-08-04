@@ -26,7 +26,7 @@ struct WalletImage: View {
     
     private func imageURL(for wallet: Listing?) -> URL? {
         
-        guard let wallet else { return nil }
+        guard let wallet = wallet else { return nil }
             
         let urlString = "https://explorer-api.walletconnect.com/v3/logo/\(size.rawValue)/\(wallet.imageId)?projectId=\(projectId)"
             

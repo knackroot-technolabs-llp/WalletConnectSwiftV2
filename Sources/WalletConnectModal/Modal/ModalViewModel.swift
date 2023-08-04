@@ -147,7 +147,7 @@ final class ModalViewModel: ObservableObject {
     func onCopyButton() {
         
         
-        guard let uri else {
+        guard let uri = uri else {
             toast = Toast(style: .error, message: "No uri found")
             return
         }
@@ -257,7 +257,7 @@ private extension ModalViewModel {
             safeAppUrl = "\(safeAppUrl)://"
         }
         
-        guard let deeplinkUri else {
+        guard let deeplinkUri = deeplinkUri else {
             throw DeeplinkErrors.uriNotCreated
         }
             
@@ -276,7 +276,7 @@ private extension ModalViewModel {
             plainAppUrl = String(plainAppUrl.dropLast())
         }
         
-        guard let deeplinkUri else {
+        guard let deeplinkUri = deeplinkUri else {
             throw DeeplinkErrors.uriNotCreated
         }
             
