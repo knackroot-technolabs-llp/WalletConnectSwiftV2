@@ -33,7 +33,6 @@ final class DefaultModalSheetInteractor: ModalSheetInteractor {
     }
     
     func createPairingAndConnect() async throws -> WalletConnectURI? {
-        print("from createPairingAndConnect")
         try await WalletConnectModal.instance.connect(topic: nil)
     }
 }
