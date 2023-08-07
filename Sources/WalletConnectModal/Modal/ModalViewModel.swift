@@ -43,7 +43,11 @@ final class ModalViewModel: ObservableObject {
     let uiApplicationWrapper: UIApplicationWrapper
     
     @Published private(set) var destinationStack: [Destination] = [.welcome]
-    @Published private(set) var uri: String?
+    @Published private(set) var uri: String? {
+        willSet {
+            print("New uri will be:\(String(describing: newValue))")
+        }
+    }
     @Published private(set) var wallets: [Listing] = []
     
     @Published var searchTerm: String = ""
@@ -148,7 +152,7 @@ final class ModalViewModel: ObservableObject {
         
     func onCopyButton() {
         
-        
+        print("Copy Button, uri:\(uri)")
         guard let uri = uri else {
             toast = Toast(style: .error, message: "No uri found")
             return
