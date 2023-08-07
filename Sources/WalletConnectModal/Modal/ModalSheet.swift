@@ -114,6 +114,7 @@ public struct ModalSheet: View {
     }
     
     private func qrCode() -> some View {
+        print("Modalsheet, uri: \(viewModel.uri)")
         VStack {
             if let uri = viewModel.uri {
                 QRCodeView(uri: uri)

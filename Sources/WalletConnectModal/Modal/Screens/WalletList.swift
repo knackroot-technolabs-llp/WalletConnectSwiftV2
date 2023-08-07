@@ -42,6 +42,7 @@ struct WalletList: View {
     }
     
     private func initialList() -> some View {
+        print("WalletList, Wallet:\(wallets)")
         ZStack {
             Spacer().frame(maxWidth: .infinity, maxHeight: 100)
             
