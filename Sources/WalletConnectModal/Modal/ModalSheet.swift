@@ -1,7 +1,7 @@
 import SwiftUI
 
 public struct ModalSheet: View {
-    @ObservedObject var viewModel: ModalViewModel
+    @StateObject var viewModel: ModalViewModel
     
     public var body: some View {
         VStack(spacing: 0) {
