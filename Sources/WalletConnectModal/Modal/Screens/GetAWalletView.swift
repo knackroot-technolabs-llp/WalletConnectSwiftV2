@@ -70,15 +70,15 @@ struct GetAWalletView: View {
     }
 }
 
-struct GetAWalletView_Previews: PreviewProvider {
-    
-    static var previews: some View {
-        
-        GetAWalletView(
-            wallets: Listing.stubList,
-            onWalletTap: { _ in },
-            navigateToExternalLink: { _ in }
-        )
-        .environment(\.projectId, Secrets.load().projectID)
-    }
-}
+// struct GetAWalletView_Previews: PreviewProvider {
+//    
+//     static var previews: some View {
+//        
+//         GetAWalletView(
+//             wallets: Listing.stubList,
+//             onWalletTap: { _ in },
+//             navigateToExternalLink: { _ in }
+//         )
+//         .environment(\.projectId, Secrets.load().projectID)
+//     }
+// }
