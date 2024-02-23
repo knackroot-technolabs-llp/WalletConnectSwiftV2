@@ -25,7 +25,7 @@ public struct ModalSheet: View {
         }
         .background(
             ZStack {
-                Color.thickOverlay.colorScheme(.light)
+                Color.thickOverlay.colorScheme(ColorScheme.light)
                 
                 VStack(spacing: 0) {
                     Color.accent
@@ -154,7 +154,7 @@ extension ModalSheet {
                 viewModel.navigateTo(.help)
             }
         }, label: {
-            Image(.help)
+            Image(Asset.help)
                 .padding(8)
         })
         .buttonStyle(CircuralIconButtonStyle())
@@ -164,7 +164,7 @@ extension ModalSheet {
         Button {
             viewModel.onCloseButton()
         } label: {
-            Image(.close)
+            Image(Asset.close)
                 .padding(8)
         }
         .buttonStyle(CircuralIconButtonStyle())

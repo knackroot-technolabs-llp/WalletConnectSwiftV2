@@ -9,7 +9,7 @@ struct ModalContainerView: View {
         VStack(spacing: 0) {
                         
             Color.thickOverlay
-                .colorScheme(.light)
+                .colorScheme(ColorScheme.light)
                 .transform {
                     #if os(iOS)
                         $0.onTapGesture {

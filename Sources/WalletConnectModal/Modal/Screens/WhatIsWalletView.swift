@@ -29,7 +29,7 @@ struct WhatIsWalletView: View {
                     navigateTo(.getWallet)
                 }) {
                     HStack {
-                        Image(.wallet)
+                        Image(Asset.wallet)
                         Text("Get a Wallet")
                     }
                 }
